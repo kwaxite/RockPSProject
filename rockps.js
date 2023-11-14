@@ -14,11 +14,11 @@ console.log(x)
 
 function playRound (playerSelection, computerSelection){
     if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'rock'){
-        return 'draw - both choice are the same'
+        return 'it\'s Draw! - both choice are the same'
     } else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'paper'){
-        return 'draw - both choice are the same'
+        return 'it\'s Draw! - both choice are the same'
     }   else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'scissors'){
-        return 'draw - both choice are the same'
+        return 'it\'s Draw! - both choice are the same'
     }  else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors'){
         return '"You Win! Rock beats Scissors"'
     } else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'paper'){
@@ -36,4 +36,18 @@ function playRound (playerSelection, computerSelection){
 
 computerSelection = getComputerChoice()
 
-console.log(playRound('ROCK', computerSelection))
+playerSelection = prompt("Choose one: rock or paper or scissors")
+x = playRound (playerSelection, computerSelection)
+x = x.split(' ')
+console.log(x[1])
+
+function game(){
+    let result = '';
+    playerCount = 0;
+    computerCount = 0;
+    for (let i = 0; i < 5; i++){
+
+    }
+}
+
+
