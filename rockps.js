@@ -12,7 +12,7 @@ return randomWord
 x = getComputerChoice()
 console.log(x)
 
-function findWinner(playerSelection, computerSelection){
+function playRound (playerSelection, computerSelection){
     if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'rock'){
         return 'draw - both choice are the same'
     } else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'paper'){
@@ -36,4 +36,4 @@ function findWinner(playerSelection, computerSelection){
 
 computerSelection = getComputerChoice()
 
-console.log(findWinner('ROCK', computerSelection))
+console.log(playRound('ROCK', computerSelection))
