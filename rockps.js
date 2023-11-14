@@ -69,7 +69,7 @@ function game(){
         document.body.innerHTML = "<h1>Computer wins the game</h1>'"
     } else {
         console.log("It's a draw")
-        document.body.innerHTML = '<h1> "It\'s a draw"</h1>';
+        document.body.innerHTML = '<h1> It\'s a draw!</h1>';
     }
 }
 
