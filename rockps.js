@@ -2,15 +2,14 @@ function getComputerChoice(){
 
 // create random number 0 to 2
 randomNum = Math.floor(Math.random() * (2 - 0 +1) + 0)
-console.log(randomNum)
+
 
 // select random word using index 
 arrChoice = ["rock","paper","scissors"]
 randomWord = arrChoice[randomNum]
 return randomWord
 }
-x = getComputerChoice()
-console.log(x)
+
 
 function playRound (playerSelection, computerSelection){
     if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'rock'){
@@ -24,7 +23,7 @@ function playRound (playerSelection, computerSelection){
     } else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'paper'){
         return '"You Lose! Paper beats Rock"'
     }else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'scissors'){
-        return '"You lose! Scissors beats Paper"'
+        return '"You Lose! Scissors beats Paper"'
     }else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'rock'){
         return '"You Win! Paper beats Rock"'
     }else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'rock'){
@@ -34,20 +33,41 @@ function playRound (playerSelection, computerSelection){
     }
 }
 
-computerSelection = getComputerChoice()
+// computerSelection = getComputerChoice()
 
-playerSelection = prompt("Choose one: rock or paper or scissors")
-x = playRound (playerSelection, computerSelection)
-x = x.split(' ')
-console.log(x[1])
+// playerSelection = prompt("Choose one: rock or paper or scissors")
+// x = playRound (playerSelection, computerSelection)
+// x = x.split(' ')
+// console.log(x[1])
 
 function game(){
     let result = '';
     playerCount = 0;
     computerCount = 0;
-    for (let i = 0; i < 5; i++){
-
+    for (let i = 1; i < 6; i++){
+        console.log(`Round ${i}`)
+        playerSelection = prompt("Choose one: rock or paper or scissors")
+        let computerSelection = getComputerChoice()
+        result = playRound (playerSelection, computerSelection)
+        console.log(result)
+        if ( result.split(' ')[1] === 'Win!'){
+            playerCount = playerCount + 1
+        } else if ( result.split(' ')[1] === 'Lose!'){
+            computerCount = computerCount + 1
+        }
+    }
+    console.log (`computer wins = ${computerCount}`)
+    console.log (`player wins = ${playerCount}`)
+    if (playerCount > computerCount){
+        console.log("You win the game")
+    } else if (playerCount < computerCount){
+        console.log("Computer wins the game")
+    } else {
+        console.log("It's a draw")
     }
 }
+
+game()
+
 
 
