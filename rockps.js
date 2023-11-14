@@ -24,10 +24,16 @@ function findWinner(playerSelection, computerSelection){
     } else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'paper'){
         return '"You Lose! Paper beats Rock"'
     }else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'scissors'){
-        return '"You lose! Paper beats Scissors"'
+        return '"You lose! Scissors beats Paper"'
     }else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'rock'){
-        return '"You lose! Paper beats Scissors"'
+        return '"You Win! Paper beats Rock"'
+    }else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'rock'){
+        return '"You Lose! Scissors beats Rock"'
+    }else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'paper'){
+        return '"You Win! Scissors beats Paper"'
+    }
 }
-}
-}
-}
+
+computerSelection = getComputerChoice()
+
+console.log(findWinner('ROCK', computerSelection))
