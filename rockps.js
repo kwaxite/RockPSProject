@@ -84,12 +84,15 @@ console.log(buttons)
 const rock = buttons[0]
 rock.textContent = 'ROCK'
 rock.style.cssText = "font-size: 2rem; background-color:yellow"
+rock.style.margin = "20px"
 const paper = buttons[1]
 paper.textContent = 'PAPER'
 paper.style.cssText = "font-size: 2rem; background-color:pink"
+paper.style.margin = "20px"
 const scissor = buttons[2]
 scissor.textContent = 'SCISSORS'
 scissor.style.cssText = "font-size: 2rem; background-color:lightgreen"
+scissor.style.margin = "20px"
 
 const select = () => {  
 }
