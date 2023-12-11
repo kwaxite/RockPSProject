@@ -98,9 +98,9 @@ scissor.style.margin = "20px"
 
 // Display value of rock button by clicking
 
-// const diplayPlayerChoice = document.querySelector('.display.one')
-// console.log(diplayPlayerChoice)
-// diplayPlayerChoice.textContent = "Nana Banana"
+// const displayPlayerChoice = document.querySelector('.display.one')
+// console.log(displayPlayerChoice)
+// displayPlayerChoice.textContent = "Nana Banana"
 
 // add div for displaying results
 const divResults = document.querySelector('#results')
@@ -127,16 +127,16 @@ console.log(next)
 
 
 // create function to display player choice
-const diplayPlayerChoice = (choice) => {
+const displayPlayerChoice = (choice) => {
     const displayOne = document.createElement('p')
     displayOne.setAttribute('class', "display one")
     displayOne.style.cssText = "font-size: 2rem; color:blue"
     displayOne.textContent = `Player choice: ${choice.toUpperCase()}`
     divResults.append(displayOne)
-    
 }
 
-const diplayComputerChoice = (choice) => {
+// create function to display computer choice
+const displayComputerChoice = (choice) => {
     const displayTwo = document.createElement('p')
     displayTwo.setAttribute('class', "display two")
     displayTwo.style.cssText = "font-size: 2rem; color:red"
@@ -144,6 +144,7 @@ const diplayComputerChoice = (choice) => {
     divResults.append(displayTwo)
 }
 
+// create function to display game result
 const displayResult = (choice) => {
     const displayThree = document.createElement('p')
     displayThree.setAttribute('class', "display two")
@@ -152,32 +153,43 @@ const displayResult = (choice) => {
     divResults.append(displayThree)
 }
 
+// add eventlistener for rock button
 rock.addEventListener('click', (e) => {
     // console.log(buttons[0].value)
     playerSelection = buttons[0].value
-    diplayPlayerChoice(playerSelection)
+    displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
-    diplayComputerChoice(computerSelection)
+    displayComputerChoice(computerSelection)
     x = playRound (playerSelection, computerSelection)
     displayResult(x)
-    console.log(x)
     const z = nextgame()
     next.append(z)
 })
 
+// add eventlistener for paper button
 paper.addEventListener('click', (e) => {
     // console.log(buttons[1].value)
     playerSelection = buttons[1].value
+    displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
+    displayComputerChoice(computerSelection)
     x = playRound (playerSelection, computerSelection)
-    console.log(x)
+    x = playRound (playerSelection, computerSelection)
+    displayResult(x)
+    const z = nextgame()
+    next.append(z)
 })
 
+// add eventlistener for scissor button
 scissor.addEventListener('click', (e) => {
     // console.log(buttons[2].value)
     playerSelection = buttons[2].value
+    displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
+    displayComputerChoice(computerSelection)
     x = playRound (playerSelection, computerSelection)
-    console.log(x)
+    displayResult(x)
+    const z = nextgame()
+    next.append(z)
 })
 
