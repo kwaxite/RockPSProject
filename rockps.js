@@ -19,17 +19,17 @@ function playRound (playerSelection, computerSelection){
     }   else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'scissors'){
         return 'it\'s Draw! - both choice are the same'
     }  else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors'){
-        return '"You Win! Rock beats Scissors"'
+        return "You Win! Rock beats Scissors"
     } else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'paper'){
-        return '"You Lose! Paper beats Rock"'
+        return "Computer wins! Paper beats Rock"
     }else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'scissors'){
-        return '"You Lose! Scissors beats Paper"'
+        return "Computer wins! Scissors beats Paper"
     }else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'rock'){
-        return '"You Win! Paper beats Rock"'
+        return "You Win! Paper beats Rock"
     }else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'rock'){
-        return '"You Lose! Scissors beats Rock"'
+        return "Computer wins!  Rock beats Scissors "
     }else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'paper'){
-        return '"You Win! Scissors beats Paper"'
+        return "You Win! Scissors beats Paper"
     }
 }
 
@@ -94,35 +94,90 @@ scissor.textContent = 'SCISSORS'
 scissor.style.cssText = "font-size: 2rem; background-color:lightgreen"
 scissor.style.margin = "20px"
 
+
+
 // Display value of rock button by clicking
 
+// const diplayPlayerChoice = document.querySelector('.display.one')
+// console.log(diplayPlayerChoice)
+// diplayPlayerChoice.textContent = "Nana Banana"
 
+// add div for displaying results
+const divResults = document.querySelector('#results')
+const next = document.querySelector('#next')
+console.log(next)
+
+// const displayOne = document.createElement('p')
+// displayOne.setAttribute('class', "display one")
+// divResults.append(displayOne)
+// console.log(divResults)
+
+// create next game button
+const nextgame = () => {
+    const nextButton = document.createElement('button')
+    nextButton.textContent = 'NEXT'
+    nextButton.style.cssText = "font-size: 2rem; background-color:yellow"
+    nextButton.style.margin = "20px"
+    return nextButton
+    console.log(nextButton)
+}
+
+
+console.log(next)
+
+
+// create function to display player choice
+const diplayPlayerChoice = (choice) => {
+    const displayOne = document.createElement('p')
+    displayOne.setAttribute('class', "display one")
+    displayOne.style.cssText = "font-size: 2rem; color:blue"
+    displayOne.textContent = `Player choice: ${choice.toUpperCase()}`
+    divResults.append(displayOne)
+    
+}
+
+const diplayComputerChoice = (choice) => {
+    const displayTwo = document.createElement('p')
+    displayTwo.setAttribute('class', "display two")
+    displayTwo.style.cssText = "font-size: 2rem; color:red"
+    displayTwo.textContent = `Computer choice: ${choice.toUpperCase()}`
+    divResults.append(displayTwo)
+}
+
+const displayResult = (choice) => {
+    const displayThree = document.createElement('p')
+    displayThree.setAttribute('class', "display two")
+    displayThree.style.cssText = "font-size: 2rem; color:purple"
+    displayThree.textContent = `Result: ${choice.toUpperCase()}`
+    divResults.append(displayThree)
+}
 
 rock.addEventListener('click', (e) => {
-    console.log(buttons[0].value)
+    // console.log(buttons[0].value)
     playerSelection = buttons[0].value
+    diplayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
+    diplayComputerChoice(computerSelection)
     x = playRound (playerSelection, computerSelection)
-    x = x.split(' ')
-    console.log(x[1])
+    displayResult(x)
+    console.log(x)
+    const z = nextgame()
+    next.append(z)
 })
 
 paper.addEventListener('click', (e) => {
-    console.log(buttons[1].value)
+    // console.log(buttons[1].value)
     playerSelection = buttons[1].value
     computerSelection = getComputerChoice()
     x = playRound (playerSelection, computerSelection)
     console.log(x)
-    x = x.split(' ')
-    console.log(x[1])
 })
 
 scissor.addEventListener('click', (e) => {
-    console.log(buttons[2].value)
+    // console.log(buttons[2].value)
     playerSelection = buttons[2].value
     computerSelection = getComputerChoice()
     x = playRound (playerSelection, computerSelection)
     console.log(x)
-    x = x.split(' ')
-    console.log(x[1])
 })
+
