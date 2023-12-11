@@ -94,6 +94,35 @@ scissor.textContent = 'SCISSORS'
 scissor.style.cssText = "font-size: 2rem; background-color:lightgreen"
 scissor.style.margin = "20px"
 
-const select = () => {  
-}
+// Display value of rock button by clicking
 
+
+
+rock.addEventListener('click', (e) => {
+    console.log(buttons[0].value)
+    playerSelection = buttons[0].value
+    computerSelection = getComputerChoice()
+    x = playRound (playerSelection, computerSelection)
+    x = x.split(' ')
+    console.log(x[1])
+})
+
+paper.addEventListener('click', (e) => {
+    console.log(buttons[1].value)
+    playerSelection = buttons[1].value
+    computerSelection = getComputerChoice()
+    x = playRound (playerSelection, computerSelection)
+    console.log(x)
+    x = x.split(' ')
+    console.log(x[1])
+})
+
+scissor.addEventListener('click', (e) => {
+    console.log(buttons[2].value)
+    playerSelection = buttons[2].value
+    computerSelection = getComputerChoice()
+    x = playRound (playerSelection, computerSelection)
+    console.log(x)
+    x = x.split(' ')
+    console.log(x[1])
+})
