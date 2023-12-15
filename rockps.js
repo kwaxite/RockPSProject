@@ -13,11 +13,11 @@ return randomWord
 
 function playRound (playerSelection, computerSelection){
     if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'rock'){
-        return 'it\'s Draw! - both choice are the same'
+        return 'Draw!'
     } else if (playerSelection.toLowerCase() === 'paper' && computerSelection === 'paper'){
-        return 'it\'s Draw! - both choice are the same'
+        return 'Draw!'
     }   else if (playerSelection.toLowerCase() === 'scissors' && computerSelection === 'scissors'){
-        return 'it\'s Draw! - both choice are the same'
+        return 'Draw!'
     }  else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'scissors'){
         return "You Win! Rock beats Scissors"
     } else if (playerSelection.toLowerCase() === 'rock' && computerSelection === 'paper'){
@@ -33,47 +33,6 @@ function playRound (playerSelection, computerSelection){
     }
 }
 
-// computerSelection = getComputerChoice()
-
-// playerSelection = prompt("Choose one: rock or paper or scissors")
-// x = playRound (playerSelection, computerSelection)
-// x = x.split(' ')
-// console.log(x[1])
-
-// function game(){
-//     let result = '';
-//     playerCount = 0;
-//     computerCount = 0;
-//     alert(`5 rounds of Rock Paper Scissors against the computer`)
-//     for (let i = 1; i < 6; i++){
-//         alert(`Round ${i}`)
-//         playerSelection = prompt("Choose one: rock or paper or scissors")
-//         let computerSelection = getComputerChoice()
-//         result = playRound (playerSelection, computerSelection)
-//         console.log(result)
-//         if ( result.split(' ')[1] === 'Win!'){
-//             playerCount = playerCount + 1
-//             alert(`Yay! you win round ${i}`)
-//         } else if ( result.split(' ')[1] === 'Lose!'){
-//             alert(`The computer wins round ${i}`)
-//             computerCount = computerCount + 1
-//         } else { alert ('Its a draw!')}
-//     }
-//     console.log (`computer wins = ${computerCount}`)
-//     console.log (`player wins = ${playerCount}`)
-//     if (playerCount > computerCount){
-//         console.log("You win the game")
-//         document.body.innerHTML = "<h1>You win the game</h1>'"
-//     } else if (playerCount < computerCount){
-//         console.log("Computer wins the game")
-//         document.body.innerHTML = "<h1>Computer wins the game</h1>'"
-//     } else {
-//         console.log("It's a draw")
-//         document.body.innerHTML = '<h1> It\'s a draw!</h1>';
-//     }
-// }
-
-// game()
 
 
 
@@ -85,10 +44,12 @@ const rock = buttons[0]
 rock.textContent = 'ROCK'
 rock.style.cssText = "font-size: 2rem; background-color:yellow"
 rock.style.margin = "20px"
+
 const paper = buttons[1]
 paper.textContent = 'PAPER'
 paper.style.cssText = "font-size: 2rem; background-color:pink"
 paper.style.margin = "20px"
+
 const scissor = buttons[2]
 scissor.textContent = 'SCISSORS'
 scissor.style.cssText = "font-size: 2rem; background-color:lightgreen"
@@ -105,66 +66,172 @@ scissor.style.margin = "20px"
 // add div for displaying results
 const divResults = document.querySelector('#results')
 const next = document.querySelector('#next')
-console.log(next)
+const info = document.querySelector('.info')
+const score = document.querySelector('.score')
+score.style.display = "flex"
+score.style.gap = "1.5rem"
+console.log(score)
 
-// const displayOne = document.createElement('p')
-// displayOne.setAttribute('class', "display one")
-// divResults.append(displayOne)
-// console.log(divResults)
 
-// create next game button
-const nextgame = () => {
-    const nextButton = document.createElement('button')
-    nextButton.textContent = 'NEXT'
-    nextButton.style.cssText = "font-size: 2rem; background-color:yellow"
-    nextButton.style.margin = "20px"
-    return nextButton
-    console.log(nextButton)
+
+// create function to display no of games played
+
+const noGames = 0
+
+const gameInfo = (gameNo) => {
+    const displayInfo = document.createElement('p')
+    displayInfo.setAttribute('class', "displayInfo")
+    displayInfo.style.cssText = "font-size: 1rem"
+    displayInfo.textContent = `Game ${gameNo} of 5`
+    info.append(displayInfo)
+}
+
+// gameInfo("5")
+
+const removeGameInfo = () => {
+    const para = document.querySelector('.info p')
+    info.removeChild(para)
+}
+
+// removeGameInfo()
+// gameInfo("10")
+
+// Create button for play game - shows no of games played
+
+let gameNo = 0
+const buttonPlay = document.createElement('button')
+buttonPlay.setAttribute('class', 'play')
+buttonPlay.textContent = 'Play Game'
+info.append(buttonPlay)
+const displayInfo = document.createElement('p')
+displayInfo.setAttribute('class', "displayInfo")
+displayInfo.style.cssText = "font-size: 1rem"
+displayInfo.textContent = ''
+info.append(displayInfo)
+console.log(buttonPlay)
+
+const gameCount = () => {
+    gameNo++;
+    displayInfo.textContent = `Game number: ${gameNo}`
+}
+
+buttonPlay.addEventListener('click',gameCount)
+
+
+// display scores
+
+// display computer score
+const displayComScore = document.createElement('p')
+displayComScore.setAttribute('class', "displayComScore")
+displayComScore.style.cssText = "font-size: 1rem"
+displayComScore.textContent = `Computer Score: `
+score.append(displayComScore)
+
+// function to update computer score
+const compScore = (cscore) => {
+    displayComScore.textContent = `Computer Score: ${cscore}`
+}
+
+// display player score
+const displayPlayerScore = document.createElement('p')
+displayPlayerScore.setAttribute('class', "displayPlayerScore")
+displayPlayerScore.style.cssText = "font-size: 1rem"
+displayPlayerScore.textContent = `Player Score: `
+score.append(displayPlayerScore)
+
+// function to update player score
+const updatePlayerScore = (pscore) => {
+    displayPlayerScore.textContent = `Player Score: ${pscore}`
+}
+
+// display number of draws
+const displayDrawInfo = document.createElement('p')
+displayDrawInfo.setAttribute('class', "displayDrawInfo")
+displayDrawInfo.style.cssText = "font-size: 1rem"
+displayDrawInfo.textContent = `Draw: `
+score.append(displayDrawInfo)
+
+const displayDrawScore = (dscore) => {
+    displayDrawInfo.textContent = `Draw: ${dscore}`
 }
 
 
-console.log(next)
 
+const removeComScore = () => {
+    const para = document.querySelector('.score p')
+    score.removeChild(para)
+}
 
-// create function to display player choice
+// display player choice
+const displayOne = document.createElement('p')
+displayOne.setAttribute('class', "display one")
+displayOne.style.cssText = "font-size: 1rem; color:blue"
+displayOne.textContent = `Player choice: `
+divResults.append(displayOne)
+
+// function to update player choice
 const displayPlayerChoice = (choice) => {
-    const displayOne = document.createElement('p')
-    displayOne.setAttribute('class', "display one")
-    displayOne.style.cssText = "font-size: 2rem; color:blue"
     displayOne.textContent = `Player choice: ${choice.toUpperCase()}`
-    divResults.append(displayOne)
 }
 
-// create function to display computer choice
+// display computer choice
+const displayTwo = document.createElement('p')
+displayTwo.setAttribute('class', "display two")
+displayTwo.style.cssText = "font-size: 1rem; color:red"
+displayTwo.textContent = `Computer choice: `
+divResults.append(displayTwo)
+
+// function to update computer choice
 const displayComputerChoice = (choice) => {
-    const displayTwo = document.createElement('p')
-    displayTwo.setAttribute('class', "display two")
-    displayTwo.style.cssText = "font-size: 2rem; color:red"
     displayTwo.textContent = `Computer choice: ${choice.toUpperCase()}`
-    divResults.append(displayTwo)
 }
 
-// create function to display game result
+// display game result
+const displayThree = document.createElement('p')
+displayThree.setAttribute('class', "display three")
+displayThree.style.cssText = "font-size: 1rem; color:purple"
+displayThree.textContent = `Result: `
+divResults.append(displayThree)
+console.log(divResults)
+
+// function to game result
 const displayResult = (choice) => {
-    const displayThree = document.createElement('p')
-    displayThree.setAttribute('class', "display two")
-    displayThree.style.cssText = "font-size: 2rem; color:purple"
     displayThree.textContent = `Result: ${choice.toUpperCase()}`
-    divResults.append(displayThree)
+}
+
+// function to display scores
+const playerScore = []
+const computerScore = []
+const drawScore = []
+
+
+const displayScores = (choice) => {
+    choice = choice.split(' ')
+    console.log(choice[0])
+    choice[0] === 'Draw!' ? drawScore.push(choice[0]): choice[0] === 'Computer' ? computerScore.push(choice[0]) : playerScore.push(choice[0])
+    console.log(`Draw: ${drawScore.length}`)
+    console.log(`Computer: ${computerScore.length}`)
+    console.log(`Player: ${playerScore.length}`)
+    compScore(computerScore.length)
+    updatePlayerScore(playerScore.length)
+    displayDrawScore(drawScore.length)
 }
 
 // add eventlistener for rock button
 rock.addEventListener('click', (e) => {
-    // console.log(buttons[0].value)
     playerSelection = buttons[0].value
     displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
     displayComputerChoice(computerSelection)
-    x = playRound (playerSelection, computerSelection)
+    let x = playRound (playerSelection, computerSelection)
+    console.log(x)
     displayResult(x)
-    const z = nextgame()
-    next.append(z)
+    displayScores(x)
 })
+
+
+
+
 
 // add eventlistener for paper button
 paper.addEventListener('click', (e) => {
@@ -173,23 +240,40 @@ paper.addEventListener('click', (e) => {
     displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
     displayComputerChoice(computerSelection)
-    x = playRound (playerSelection, computerSelection)
-    x = playRound (playerSelection, computerSelection)
+    let x = playRound (playerSelection, computerSelection)
+    console.log(x)
     displayResult(x)
-    const z = nextgame()
-    next.append(z)
+    displayScores(x)
+
+
 })
 
 // add eventlistener for scissor button
 scissor.addEventListener('click', (e) => {
-    // console.log(buttons[2].value)
+    // console.log(buttons[1].value)
     playerSelection = buttons[2].value
     displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
     displayComputerChoice(computerSelection)
     x = playRound (playerSelection, computerSelection)
     displayResult(x)
-    const z = nextgame()
-    next.append(z)
+    displayScores(x)
 })
+
+
+
+
+
+
+// function game(){
+//     let result = '';
+//     playerCount = 0;
+//     computerCount = 0;
+//     alert(`5 rounds of Rock Paper Scissors against the computer`)
+//     for (let i = 1; i < 6; i++){
+//         gameInfo(i)
+//         gameplay()
+// }
+// }
+// game()
 
