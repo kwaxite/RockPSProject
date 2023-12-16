@@ -96,26 +96,21 @@ const removeGameInfo = () => {
 // removeGameInfo()
 // gameInfo("10")
 
-// Create button for play game - shows no of games played
+// display no of games played
 
 let gameNo = 0
-const buttonPlay = document.createElement('button')
-buttonPlay.setAttribute('class', 'play')
-buttonPlay.textContent = 'Play Game'
-info.append(buttonPlay)
-const displayInfo = document.createElement('p')
-displayInfo.setAttribute('class', "displayInfo")
-displayInfo.style.cssText = "font-size: 1rem"
-displayInfo.textContent = ''
-info.append(displayInfo)
-console.log(buttonPlay)
+const noGamesPlayed = document.createElement('p')
+noGamesPlayed.setAttribute('class', 'play')
+noGamesPlayed.textContent = 'Click on your choice to start game'
+info.append(noGamesPlayed)
+console.log(noGamesPlayed)
 
 const gameCount = () => {
     gameNo++;
-    displayInfo.textContent = `Game number: ${gameNo}`
+    noGamesPlayed.textContent = `Game number: ${gameNo}`
 }
 
-buttonPlay.addEventListener('click',gameCount)
+
 
 
 // display scores
@@ -215,6 +210,7 @@ const displayScores = (choice) => {
     compScore(computerScore.length)
     updatePlayerScore(playerScore.length)
     displayDrawScore(drawScore.length)
+    
 }
 
 // add eventlistener for rock button
@@ -227,6 +223,7 @@ rock.addEventListener('click', (e) => {
     console.log(x)
     displayResult(x)
     displayScores(x)
+    gameCount()
 })
 
 
@@ -244,6 +241,7 @@ paper.addEventListener('click', (e) => {
     console.log(x)
     displayResult(x)
     displayScores(x)
+    gameCount()
 
 
 })
@@ -258,6 +256,7 @@ scissor.addEventListener('click', (e) => {
     x = playRound (playerSelection, computerSelection)
     displayResult(x)
     displayScores(x)
+    gameCount()
 })
 
 
