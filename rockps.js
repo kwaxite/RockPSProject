@@ -101,7 +101,7 @@ const removeGameInfo = () => {
 let gameNo = 0
 const noGamesPlayed = document.createElement('p')
 noGamesPlayed.setAttribute('class', 'play')
-noGamesPlayed.textContent = 'Click on your choice to start game'
+noGamesPlayed.textContent = 'First to reach 5, WINS. Click on your choice to start game'
 info.append(noGamesPlayed)
 console.log(noGamesPlayed)
 
@@ -210,11 +210,35 @@ const displayScores = (choice) => {
     compScore(computerScore.length)
     updatePlayerScore(playerScore.length)
     displayDrawScore(drawScore.length)
+    displayWinner()
     
 }
 
-// add eventlistener for rock button
-rock.addEventListener('click', (e) => {
+// display final scores
+
+const displayOverallWinner = document.createElement('p')
+displayOverallWinner.setAttribute('class', "display four")
+displayOverallWinner.style.cssText = "font-size: 1rem; color:blue"
+displayOverallWinner.textContent = ``
+divResults.append(displayOverallWinner)
+
+const displayWinner = () => {
+    let playerTotal = playerScore.length
+    let computerTotal = computerScore.length 
+    if (playerTotal === 5){
+        displayOverallWinner.textContent = `You win the game!!`
+        console.log(playerTotal)
+        removeClick()
+    } else if (computerTotal === 5){
+        displayOverallWinner.textContent = `Computer Wins the game`
+        console.log(computerTotal)
+        removeClick()
+    }
+}
+
+// create eventlistener for rock button using named function
+
+const selectRock = (e) => {
     playerSelection = buttons[0].value
     displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
@@ -224,14 +248,18 @@ rock.addEventListener('click', (e) => {
     displayResult(x)
     displayScores(x)
     gameCount()
-})
+}
+
+rock.addEventListener('click', selectRock)
 
 
 
 
 
-// add eventlistener for paper button
-paper.addEventListener('click', (e) => {
+
+// create eventlistener for paper button using named function
+
+const selectPaper = (e) => {
     // console.log(buttons[1].value)
     playerSelection = buttons[1].value
     displayPlayerChoice(playerSelection)
@@ -242,13 +270,14 @@ paper.addEventListener('click', (e) => {
     displayResult(x)
     displayScores(x)
     gameCount()
+}
+
+paper.addEventListener('click', selectPaper)
 
 
-})
+// create eventlistener for scissor button using named function
 
-// add eventlistener for scissor button
-scissor.addEventListener('click', (e) => {
-    // console.log(buttons[1].value)
+const selectScissor = (e) => {
     playerSelection = buttons[2].value
     displayPlayerChoice(playerSelection)
     computerSelection = getComputerChoice()
@@ -257,22 +286,22 @@ scissor.addEventListener('click', (e) => {
     displayResult(x)
     displayScores(x)
     gameCount()
-})
+}
+
+scissor.addEventListener('click', selectScissor)
+
+
+// function to remove event listeners
+
+const removeClick = () => {
+    rock.removeEventListener('click', selectRock)
+    paper.removeEventListener('click', selectPaper)
+    scissor.removeEventListener('click', selectScissor)
+}
 
 
 
 
 
 
-// function game(){
-//     let result = '';
-//     playerCount = 0;
-//     computerCount = 0;
-//     alert(`5 rounds of Rock Paper Scissors against the computer`)
-//     for (let i = 1; i < 6; i++){
-//         gameInfo(i)
-//         gameplay()
-// }
-// }
-// game()
 
