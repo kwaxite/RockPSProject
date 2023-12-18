@@ -300,7 +300,14 @@ const removeClick = () => {
 }
 
 
+// option to start a new game
 
+const newgameButton = document.createElement ('button')
+displayOverallWinner.setAttribute('class', "newgame")
+newgameButton.style.cssText= "font-size: 1rem; background-color:purple; color:white"
+newgameButton.textContent = "New Game"
+divResults.append(newgameButton)
+// location.reload()
 
 
 
