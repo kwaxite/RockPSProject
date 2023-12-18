@@ -229,10 +229,12 @@ const displayWinner = () => {
         displayOverallWinner.textContent = `You win the game!!`
         console.log(playerTotal)
         removeClick()
+        newgameButton()
     } else if (computerTotal === 5){
         displayOverallWinner.textContent = `Computer Wins the game`
         console.log(computerTotal)
         removeClick()
+        newgameButton()
     }
 }
 
@@ -302,12 +304,24 @@ const removeClick = () => {
 
 // option to start a new game
 
-const newgameButton = document.createElement ('button')
-displayOverallWinner.setAttribute('class', "newgame")
-newgameButton.style.cssText= "font-size: 1rem; background-color:purple; color:white"
-newgameButton.textContent = "New Game"
-divResults.append(newgameButton)
-// location.reload()
+const newgameButton = () => {
+    const newgameBtn = document.createElement ('button')
+    displayOverallWinner.setAttribute('class', "newgame")
+    newgameBtn.style.cssText= "font-size: 1rem; background-color:purple; color:white"
+    newgameBtn.textContent = "New Game"
+    divResults.append(newgameBtn)
+    // function to reload page
+    const reloadPage = () => {
+        location.reload()
+    }
+    newgameBtn.addEventListener('click', reloadPage)
+}
+
+
+
+
+
+
 
 
 
