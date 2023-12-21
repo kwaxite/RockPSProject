@@ -72,6 +72,11 @@ score.style.display = "flex"
 score.style.gap = "1.5rem"
 console.log(score)
 
+const body = document.querySelector('body')
+body.style.display = "flex"
+body.style.flexDirection = "column"
+body.style.justifyContent = "center"
+body.style.alignItems = "center"
 
 
 // create function to display no of games played
@@ -81,7 +86,7 @@ const noGames = 0
 const gameInfo = (gameNo) => {
     const displayInfo = document.createElement('p')
     displayInfo.setAttribute('class', "displayInfo")
-    displayInfo.style.cssText = "font-size: 1rem"
+    displayInfo.style.fontSize = "1.5rem"
     displayInfo.textContent = `Game ${gameNo} of 5`
     info.append(displayInfo)
 }
@@ -101,7 +106,7 @@ const removeGameInfo = () => {
 let gameNo = 0
 const noGamesPlayed = document.createElement('p')
 noGamesPlayed.setAttribute('class', 'play')
-noGamesPlayed.textContent = 'First to reach 5, WINS. Click on your choice to start game'
+noGamesPlayed.textContent = 'First to win 5 games. Click on your choice to start game'
 info.append(noGamesPlayed)
 console.log(noGamesPlayed)
 
@@ -160,7 +165,7 @@ const removeComScore = () => {
 // display player choice
 const displayOne = document.createElement('p')
 displayOne.setAttribute('class', "display one")
-displayOne.style.cssText = "font-size: 1rem; color:blue"
+displayOne.style.cssText = "font-size: 1.5rem; color:green"
 displayOne.textContent = `Player choice: `
 divResults.append(displayOne)
 
@@ -172,7 +177,7 @@ const displayPlayerChoice = (choice) => {
 // display computer choice
 const displayTwo = document.createElement('p')
 displayTwo.setAttribute('class', "display two")
-displayTwo.style.cssText = "font-size: 1rem; color:red"
+displayTwo.style.cssText = "font-size: 1.5rem; color:brown"
 displayTwo.textContent = `Computer choice: `
 divResults.append(displayTwo)
 
@@ -184,7 +189,7 @@ const displayComputerChoice = (choice) => {
 // display game result
 const displayThree = document.createElement('p')
 displayThree.setAttribute('class', "display three")
-displayThree.style.cssText = "font-size: 1rem; color:purple"
+displayThree.style.cssText = "font-size: 1.5rem; color:purple"
 displayThree.textContent = `Result: `
 divResults.append(displayThree)
 console.log(divResults)
@@ -218,7 +223,7 @@ const displayScores = (choice) => {
 
 const displayOverallWinner = document.createElement('p')
 displayOverallWinner.setAttribute('class', "display four")
-displayOverallWinner.style.cssText = "font-size: 1rem; color:blue"
+displayOverallWinner.style.cssText = "font-size: 2rem; color:blue"
 displayOverallWinner.textContent = ``
 divResults.append(displayOverallWinner)
 
@@ -231,7 +236,7 @@ const displayWinner = () => {
         removeClick()
         newgameButton()
     } else if (computerTotal === 5){
-        displayOverallWinner.textContent = `Computer Wins the game`
+        displayOverallWinner.textContent = `Computer wins the game`
         console.log(computerTotal)
         removeClick()
         newgameButton()
